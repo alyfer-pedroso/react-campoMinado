@@ -84,7 +84,7 @@ export default class App extends Component {
 
   onTutorial = () => {
     alert(
-      "--Marcação das bandeiras--\nPc:\nClique direito para marcar bandeira\n \nCelular:\nSegurar touch para marcar bandeira\n \n--Mudar dificuldade--\nSão 3 tipos de dificuldade \nClicar em cima da bandeira gigante para alternar entre as 3"
+      "--Marcação das bandeiras--\nPc:\nClique direito para marcar ou desmarcar bandeira\n \nCelular:\nSegurar touch para marcar ou desmarcar bandeira\n \n--Mudar dificuldade--\nSão 3 tipos de dificuldade \nClicar em cima da bandeira gigante para alternar entre as 3"
     );
   };
 
