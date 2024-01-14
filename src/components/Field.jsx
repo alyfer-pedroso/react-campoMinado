@@ -56,7 +56,7 @@ const Field = (props) => {
   }, {});
 
   return (
-    <div onClick={props.onOpen}>
+    <div onClick={props.onOpen} onContextMenu={props.onSelect}>
       <div className={`${!opened ? "cursor" : ""}`} style={styleField}>
         {!mined && opened && nearMines > 0 ? <p style={styles.label}>{nearMines}</p> : false}
         {mined && opened ? <Mine /> : false}

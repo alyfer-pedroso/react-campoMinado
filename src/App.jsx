@@ -49,11 +49,11 @@ export default class App extends Component {
 
     if (lost) {
       showMines(board);
-      alert("Perdeeeeu!", "Que buuuurro!");
+      alert("Perdeeeeu!\nQue buuuurro!");
     }
 
     if (won) {
-      alert("Parabéns", "Você Venceu!");
+      alert("Parabéns\nVocê Venceu!");
     }
 
     this.setState({ board, lost, won });
@@ -65,28 +65,41 @@ export default class App extends Component {
     const won = wonGame(board);
 
     if (won) {
-      alert("Parabéns", "Você Venceu!");
+      alert("Parabéns\nVocê Venceu!");
     }
 
     this.setState({ board, won });
   };
 
   onLevelSelected = () => {
-    if (params.difficultLevel === 0.15) {
+    if (params.difficultLevel === 0.1) {
+      params.difficultLevel = 0.2;
+    } else if (params.difficultLevel === 0.2) {
       params.difficultLevel = 0.3;
     } else {
-      params.difficultLevel = 0.15;
+      params.difficultLevel = 0.1;
     }
     this.setState(this.createState());
   };
 
+  onTutorial = () => {
+    alert(
+      "--Marcação das bandeiras--\nPc:\nClique direito para marcar bandeira\n \nCelular:\nSegurar touch para marcar bandeira\n \n--Mudar dificuldade--\nSão 3 tipos de dificuldade \nClicar em cima da bandeira gigante para alternar entre as 3"
+    );
+  };
+
   render() {
     return (
-      <div style={styles.container}>
+      <div
+        style={styles.container}
+        onContextMenu={(e) => e.preventDefault()}
+        onSelect={(e) => e.preventDefault()}
+      >
         <Header
           flagsLeft={this.minesAmount() - flagsUsed(this.state.board)}
           onNewGame={() => this.setState(this.createState())}
           onFlagPress={() => this.onLevelSelected()}
+          tutorial={() => this.onTutorial()}
         />
         <div style={styles.board}>
           <MineField

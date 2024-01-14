@@ -8,8 +8,13 @@ const Header = (props) => {
         </div>
         <p style={styles.flagsLeft}>= {props.flagsLeft}</p>
       </div>
-      <div style={styles.button} onClick={props.onNewGame}>
-        <p style={styles.buttonLabel}>Novo Jogo</p>
+      <div>
+        <div style={styles.button} onClick={props.onNewGame}>
+          &nbsp;<p style={styles.buttonLabel}>Novo Jogo</p>
+        </div>
+        <div style={{ ...styles.button, marginBottom: "1rem" }} onClick={props.tutorial}>
+          <p style={styles.buttonLabel}>Como Jogar</p>
+        </div>
       </div>
     </div>
   );
@@ -51,6 +56,7 @@ const styles = {
     paddingHorizontal: 20,
     paddingVertical: 5,
     cursor: "pointer",
+    flexDirection: "row",
   },
   buttonLabel: {
     fontSize: 20,
