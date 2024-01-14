@@ -80,9 +80,11 @@ const openField = (board, row, column) => {
       field.exploded = true;
     } else if (safeNeighborhood(board, row, column)) {
       getNeighbors(board, row, column).forEach((n) => openField(board, n.row, n.column));
+      if (field.flagged) field.flagged = !field.flagged;
     } else {
       const neighbors = getNeighbors(board, row, column);
       field.nearMines = neighbors.filter((n) => n.mined).length;
+      if (field.flagged) field.flagged = !field.flagged;
     }
   }
 };
@@ -98,7 +100,7 @@ const showMines = (board) =>
 
 const invertFlag = (board, row, column) => {
   const field = board[row][column];
-  field.flagged = !field.flagged;
+  if (!field.opened) field.flagged = !field.flagged;
 };
 
 const flagsUsed = (board) => fields(board).filter((field) => field.flagged).length;
